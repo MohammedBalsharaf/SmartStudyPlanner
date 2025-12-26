@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Study Planner</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        label { display: block; margin-top: 10px; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        ul { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>AI Study Planner</h1>
+    <form method="POST">
+        <h2>Daily Routine</h2>
+        <label>Wake up (HH:MM): <input type="time" name="wake" required></label>
+        <label>Sleep (HH:MM): <input type="time" name="sleep" required></label>
+        <label>School start: <input type="time" name="school_start" required></label>
+        <label>School end: <input type="time" name="school_end" required></label>
+        <label>Tuition start: <input type="time" name="tuition_start" required></label>
+        <label>Tuition end: <input type="time" name="tuition_end" required></label>
+        <label>Meals (mins): <input type="number" name="meals" required></label>
+        <label>Travel (mins): <input type="number" name="travel" required></label>
+        <label>Breaks (mins): <input type="number" name="breaks" required></label>
+
+        <h2>Subjects</h2>
+        <label>Subjects (comma separated): <textarea name="subjects" required></textarea></label>
+
+        <button type="submit">Generate Plan</button>
+    </form>
+
+    {% if schedule %}
+        <h2>Today's AI Study Plan</h2>
+        <ul>
+            {% for item in schedule %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
